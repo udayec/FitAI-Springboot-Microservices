@@ -1,0 +1,43 @@
+server:
+  port: 8082
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/FitnessAI
+      database: FitnessActivity
+  rabbitmq:
+    host:
+    port: 5672
+    username:
+    password:
+    virtual-host:
+
+rabbitmq:
+  exchange:
+    name: fitness.exchange
+  queue:
+    name: activity.queue
+  routing:
+    key: activity.routing
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+gemini:
+  api:
+    base-url: https://generativelanguage.googleapis.com/v1beta
+    model: gemini-1.5-flash
+    key:
+
+logging:
+  level:
+    reactor.netty: DEBUG
+    reactor.core: DEBUG
+    org.springframework.web.reactive.function.client.ExchangeFunctions: DEBUG
+    com.fitnessai.aiservice: DEBUG
+
